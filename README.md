@@ -5,13 +5,13 @@ This repository contains the R code required to reproduce the results in our pap
 # Steps to Reproduce the Paper
 
 The main two scripts that perform the work for the results in our paper are `Paper_Code_Data.R` and `Paper_Code_Figure.R`. (If you would only like to reproduce the figures, or just inspect the data sets without rerunning the time consuming algorithms in `Paper_Code_Data.R`, you can skip straight to the description of `Paper_Code_Figure.R` in the next paragraph which reloads the files below.) If you would like to reproduce all the experiments used in the paper, you can run all the code in `Paper_Code_Data.R`. The following files will be saved:
-- `SimulationStudy_Fixedq.RData`: In this file, we store the results from our simulation study fixed at $q = 1.35$ and for $p = 0.5,0.51,\ldots,1$. The name of the variable stored is `results_fixed_q`.
-- `SimulationStudy_Varyingq.RData`: In this file, we store the results from our simulation study for $q = 1,1.7,\ldots,1.35,1.42,1.49$ and $p = 0.55,0.6,\ldots,0.90,0.95$. The name of the variable stored is `results_varying_q`.
-- `SimulationStudy_CVq.RData`: In this file, we store the results from our simulation study with $q$ chosen using cross-validation and for $p = 0.55,0.6,\ldots,0.90,0.95$. The name of the variable stored is `results_cv`.
+- `SimulationStudy_Fixedq.RData`: In this file, we store the results from our simulation study fixed at <!-- $q = 1.35$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=q%20%3D%201.35"> and for <!-- $p = 0.5,0.51,\ldots,1$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=p%20%3D%200.5%2C0.51%2C%5Cldots%2C1">. The name of the variable stored is `results_fixed_q`.
+- `SimulationStudy_Varyingq.RData`: In this file, we store the results from our simulation study for <!-- $q = 1,1.7,\ldots,1.35,1.42,1.49$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=q%20%3D%201%2C1.7%2C%5Cldots%2C1.35%2C1.42%2C1.49"> and <!-- $p = 0.55,0.6,\ldots,0.90,0.95$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=p%20%3D%200.55%2C0.6%2C%5Cldots%2C0.90%2C0.95">. The name of the variable stored is `results_varying_q`.
+- `SimulationStudy_CVq.RData`: In this file, we store the results from our simulation study with <!-- $q$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=q"> chosen using cross-validation and for <!-- $p = 0.55,0.6,\ldots,0.90,0.95$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=p%20%3D%200.55%2C0.6%2C%5Cldots%2C0.90%2C0.95">. The name of the variable stored is `results_cv`.
 - `CaseStudy_EconomicLoss.RData`: Results from our economic loss case study. The name of the variable stored is `results_economic_loss`.
 - `CaseStudy_SimulationBlackout.RData`: Results from our system blackout case study. The name of the variable stored is `results_system_blackout`.
 - `CaseStudy_RampLambda.RData`: Results from our ramp attack case study using the scale parameter formulation. The name of the variable stored is `results_ramp_lambda`.
-- `CaseStudy_RampGamma.RData`: Results from our ramp attack case study using the $\gamma$ formulation. The name of the variable stored is `results_ramp_gamma`.
+- `CaseStudy_RampGamma.RData`: Results from our ramp attack case study using the <!-- $\gamma$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cgamma"> formulation. The name of the variable stored is `results_ramp_gamma`.
 
 Once these files are obtained, you can proceed onto `Paper_Code_Figure.R`, which we now describe. 
 
@@ -60,6 +60,7 @@ We provide many data files in this repository, either as Excel spreadsheets or R
 ### GEFCom2012
 
 The data for the case study comes from the Global Energy Forecasting Competititon (GEFCom2012) from [Hong et al. (2014)](https://doi.org/10.1016/j.ijforecast.2013.07.001). This data is given as two Excel files:
+
 - `Load_history.csv`: This data gives the hourly load history at 20 zones.
 - `Temperature_history.csv`: This data gives the hourly temperature history at 11 weather stations.
 More information on these datasets is given by [Hong et al. (2014)](https://doi.org/10.1016/j.ijforecast.2013.07.001), and in this blogpost by [Hong (2016)](http://blog.drhongtao.com/2016/07/gefcom2012-load-forecasting-data.html). We process this code into a convenient format for our application in the `Paper_Code_Data.R` under the "Read in the case study data" heading.
@@ -77,6 +78,7 @@ $$ -->
 
 <div align="center"><img style="background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cepsilon_i%20%5Csim%20%5Cunderbrace%7Bp%5Cmathcal%20N(0%2C%20%5Csigma_1)%7D_%7B%5Ctext%7Bclean%20data%7D%7D%20%2B%20%5Cunderbrace%7B(1-p)%5Cmathcal%20N(0%2C%20%5Csigma_2)%7D_%7B%5Ctext%7Bcontaminated%20data%7D%7D%2C%20%0D"></div>
 so that $100(1-p)\%$ of the data are outliers, and we take $\sigma_1 = 0.1$ and $\sigma_2=1.3$. The simulation study is performed in `Paper_Code_Data.R` under the "Simulation study" heading", producing the following files:
+
 - `SimulationStudy_Fixedq.RData`: In this file, we store the results from our simulation study fixed at $q = 1.35$ and for $p = 0.5,0.51,\ldots,1$. The name of the variable stored is `results_fixed_q`.
 - `SimulationStudy_Varyingq.RData`: In this file, we store the results from our simulation study for $q = 1,1.7,\ldots,1.35,1.42,1.49$ and $p = 0.55,0.6,\ldots,0.90,0.95$. The name of the variable stored is `results_varying_q`.
 - `SimulationStudy_CVq.RData`: In this file, we store the results from our simulation study with $q$ chosen using cross-validation and for $p = 0.55,0.6,\ldots,0.90,0.95$. The name of the variable stored is `results_cv`.
