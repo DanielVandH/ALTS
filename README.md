@@ -50,7 +50,10 @@ More information on these datasets is given by [Hong et al. (2014)](https://doi.
 
 ### Simulation Study Data
 
-The results from our simulation study are saved as R data files. As described in our paper, this simulation study concerns the model ![equation](https://latex.codecogs.com/svg.image?y_i%20=%20%5Cbeta_0%20&plus;%20%5Cbeta_1x_%7B1i%7D%20&plus;%20%5Cbeta_2x_%7B2i%7D%20&plus;%20%5Cbeta_3x_%7B3i%7D%20&plus;%20%5Cepsilon_i,%20%5Cquad%20i=1,%5Cldots,n,)
+The results from our simulation study are saved as R data files. As described in our paper, this simulation study concerns the model 
+
+<img src="http://www.sciweavers.org/tex2img.php?eq=y_i%20%3D%20%5Cbeta_0%20%2B%20%5Cbeta_1x_%7B1i%7D%20%2B%20%5Cbeta_2x_%7B2i%7D%20%2B%20%5Cbeta_3x_%7B3i%7D%20%2B%20%5Cepsilon_i%2C%20%5Cquad%20i%3D1%2C%5Cldots%2Cn%2C&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \beta_3x_{3i} + \epsilon_i, \quad i=1,\ldots,n," width="406" height="19" />
+
 where $\beta_0 = -1.3$, $\beta_1 = 2.0$, $\beta_2 = 1.7$, and $\beta_3 = -3.0$. We use $n = 2000$ and take $x_1 \sim \mathcal U(-1, 1)$, $x_2 \sim \mathcal N(0, 1)$, $x_3 \sim \mathcal U(0, 1)$. For the residuals, we suppose that their distribution is given as the mixture $$ \epsilon_i \sim \underbrace{p\mathcal N(0, \sigma_1)}_{\textnormal{clean data}} + \underbrace{(1-p)\mathcal N(0, \sigma_2)}_{\textnormal{contaminated data}}, $$
 so that $100(1-p)\%$ of the data are outliers, and we take $\sigma_1 = 0.1$ and $\sigma_2=1.3$. The simulation study is performed in `Paper_Code_Data.R` under the "Simulation study" heading", producing the following files:
 - `SimulationStudy_Fixedq.R`: In this file,
