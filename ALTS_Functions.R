@@ -161,7 +161,7 @@ ALTS = function(model_formula, data, q = 1.0, maxIters = 20, tol = 1e-4, sigma_p
 ## Arguments:
 ##  model_formula: The formula for the regression.
 ##  data: Data frame to use for the regression. Contains all the terms in model_formula.
-##  maxIters = 20: The maximum allowable number of iterations.
+##  maxIters = 100: The maximum allowable number of iterations.
 ##  tol = 1e-4: Threshold for the convergence, based on `abs(p[i] - p[i-1])/p[i] < tol`.
 ##  sigma_p = 0.25: Upper index to use in the modified MAD estimator.
 ##  num_q = 30: Number of q values to test.
@@ -175,8 +175,8 @@ ALTS = function(model_formula, data, q = 1.0, maxIters = 20, tol = 1e-4, sigma_p
 ##    $model: The final model.
 ##    $q: The q value used. This makes some of the simulation study parts a bit easier.
 ################################################################################
-ALTS_CV = function(model_formula, data, maxIters = 20, tol = 1e-4, sigma_p = 0.25, num_folds = 5, num_q = 30) {
-  q = runif(num_q, min = 0.8, max = 1.5)
+ALTS_CV = function(model_formula, data, maxIters = 30, tol = 1e-2, sigma_p = 0.25, num_folds = 5, num_q = 30) {
+  q = runif(num_q, 1.1, 1.35)
   resp_name = lhs.vars(model_formula)
   resp = data[, resp_name]
   N = nrow(data)
@@ -211,7 +211,7 @@ ALTS_CV = function(model_formula, data, maxIters = 20, tol = 1e-4, sigma_p = 0.2
   # Select best
   best_q = q[which.min(averaged_mapes)]
   # Fit the model again
-  return(ALTS(model_formula, data, q = best_q, maxIters = maxIters, tol = tol, sigma_p = sigma_p, 
+  return(ALTS(model_formula, data, q = best_q, maxIters = 100, tol = 1e-4, sigma_p = sigma_p, 
               residual_initial = lad(model_formula, data = data)$residuals))
 }
 
