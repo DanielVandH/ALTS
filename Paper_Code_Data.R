@@ -60,13 +60,6 @@ q_2 = seq(1.0, 1.5, by = 0.07)
 results_varying_q = complete_sim_fnc_vary_q(num_sims_2, beta, X, p_2, sigma_1, sigma_2, q_2)
 save(results_varying_q, file = "SimulationStudy_Varyingq.RData")
 
-## Results: cross-validated q 
-set.seed(1003991)
-num_sims_3 = 100
-p_3 = c(0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95)
-results_cv = complete_sim_fnc_cv(num_sims_3, beta, X, p_3, sigma_1, sigma_2)
-save(results_cv, file = "SimulationStudy_CVq.RData")
-
 ################################################################################
 ## Read in the case study data
 ################################################################################
