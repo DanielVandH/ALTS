@@ -8,7 +8,7 @@
 ##  2. ramp_attack(t, yt, p, lambda, L)
 ##          Randomly attacks a proportion p of the data yt using a ramp attack. 
 ##
-##  3. random_attack_ALTS = function(load_dat_training, load_dat_test, mu, sigma, p, q, model_formula)
+##  3. random_attack_ALTS(load_dat_training, load_dat_test, mu, sigma, p, q, model_formula)
 ##          Randomly attacks the data and then fits many models.
 ##
 ##  4. random_attack_all_simulations(num_sims, load_dat_training, load_dat_test, mu, sigma, p, q, model_formula)

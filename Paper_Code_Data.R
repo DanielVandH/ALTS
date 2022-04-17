@@ -5,20 +5,11 @@ source("Simulation_Functions.R")
 source("ALTS_Functions.R")
 source("Case_Study_Functions.R")
 library(lemon)
-library(scales)
 library(EnvStats)
 library(L1pack)
-library(dplyr)
 library(caret)
 library(formula.tools)
-library(MLmetrics)
-library(quantreg)
-library(ggplot2)
 library(pracma)
-library(MASS)
-library(rlmDataDriven)
-library(ggplot2)
-library(tidyverse)
 library(tidyverse)
 library(magrittr)
 library(eeptools)
@@ -59,7 +50,7 @@ num_sims_1 = 100
 p_1 = seq(0.5, 1.0, by = 0.01)
 q_1 = 1.35
 results_fixed_q = complete_sim_fnc(num_sims_1, beta, X, p_1, sigma_1, sigma_2, q = q_1)
-save(results_fixed_q, file = "SimulationStudy_Fixedq.R")
+save(results_fixed_q, file = "SimulationStudy_Fixedq.RData")
 
 ## Results: varying q
 set.seed(10039991)
@@ -67,14 +58,14 @@ num_sims_2 = 100
 p_2 = c(0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95)
 q_2 = seq(1.0, 1.5, by = 0.07)
 results_varying_q = complete_sim_fnc_vary_q(num_sims_2, beta, X, p_2, sigma_1, sigma_2, q_2)
-save(results_varying_q, file = "SimulationStudy_Varyingq.R")
+save(results_varying_q, file = "SimulationStudy_Varyingq.RData")
 
 ## Results: cross-validated q 
 set.seed(1232252)
 num_sims_3 = 100
 p_3 = c(0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95)
 results_cv = complete_sim_fnc_cv(num_sims_3, beta, X, p_3, sigma_1, sigma_2)
-save(results_cv, file = "SimulationStudy_CVq.R")
+save(results_cv, file = "SimulationStudy_CVq.RData")
 
 ################################################################################
 ## Read in the case study data
@@ -160,7 +151,7 @@ sigma = c(1/6, 1/5, 1/4) * mu
 cv = sigma/mu
 p = seq(0.1, 0.5, by = 0.1)
 q = 1.2
-num_sims = 10
+num_sims = 5
 results_economic_loss = random_attack_all_simulations_grid_vals(num_sims, load_dat_training, load_dat_test,
                                                                 mu, cv, p, q, model_formula)
 save(results_economic_loss, file = "CaseStudy_EconomicLoss.RData")
@@ -168,13 +159,13 @@ save(results_economic_loss, file = "CaseStudy_EconomicLoss.RData")
 ################################################################################
 ## System blackout study
 ################################################################################
-set.seed(87286787691)
+set.seed(891)
 mu = c(-20, -40, -60)
 sigma = c(-1/6, -1/5, -1/4) * mu 
 cv = sigma/mu
 p = seq(0.1, 0.5, by = 0.1)
 q = 1.2
-num_sims = 10
+num_sims = 5
 results_system_blackout = random_attack_all_simulations_grid_vals(num_sims, load_dat_training, load_dat_test,
                                                                 mu, cv, p, q, model_formula)
 save(results_system_blackout, file = "CaseStudy_SystemBlackout.RData")
@@ -182,12 +173,12 @@ save(results_system_blackout, file = "CaseStudy_SystemBlackout.RData")
 ################################################################################
 ## Ramp attack: lambda
 ################################################################################
-set.seed(2223283221)
+set.seed(2221)
 L = c(40, 60, 80)
 lambda = c(0.05, 0.1, 0.15)
 p = seq(0.1, 0.5, by = 0.1)
 q = 1.2
-num_sims = 10
+num_sims = 5
 results_ramp_lambda = ramp_attack_all_simulations_grid_vals(num_sims, load_dat_training, load_dat_test,
                                                                   lambda, L, p, q, model_formula)
 save(results_ramp_lambda, file = "CaseStudy_RampLambda.RData")
@@ -195,12 +186,12 @@ save(results_ramp_lambda, file = "CaseStudy_RampLambda.RData")
 ################################################################################
 ## Ramp attack: gamma
 ################################################################################
-set.seed(266433221)
+set.seed(2666221)
 L = c(100, 200, 300)
 gamma = c(2, 3, 4)
 p = seq(0.1, 0.5, by = 0.1)
 q = 1.2
-num_sims = 10
+num_sims = 5
 results_ramp_gamma = ramp_attack_all_simulations_grid_vals_2(num_sims, load_dat_training, load_dat_test,
                                                             gamma, L, p, q, model_formula)
 save(results_ramp_gamma, file = "CaseStudy_RampGamma.RData")
