@@ -47,15 +47,15 @@ sigma_2 = 1.3
 ## Results: fixed q 
 set.seed(1003991)
 num_sims_1 = 100
-p_1 = seq(0.5, 1.0, by = 0.01)
+p_1 = seq(0.5, 1.0, by = 0.05)
 q_1 = 1.35
 results_fixed_q = complete_sim_fnc(num_sims_1, beta, X, p_1, sigma_1, sigma_2, q = q_1)
 save(results_fixed_q, file = "SimulationStudy_Fixedq.RData")
 
 ## Results: varying q
-set.seed(10039991)
+set.seed(100399391)
 num_sims_2 = 100
-p_2 = c(0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95)
+p_2 = seq(0.5, 1.0, by = 0.05)
 q_2 = seq(1.0, 1.5, by = 0.07)
 results_varying_q = complete_sim_fnc_vary_q(num_sims_2, beta, X, p_2, sigma_1, sigma_2, q_2)
 save(results_varying_q, file = "SimulationStudy_Varyingq.RData")

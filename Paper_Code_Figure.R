@@ -52,9 +52,9 @@ load("data/Simulation/SimulationStudy_Fixedq.RData") # results_fixed_q
 load("data/Simulation/SimulationStudy_Varyingq.RData") # results_varying_q
 load("data/Simulation/SimulationStudy_ExtraIterate.RData") # extra_iterate
 
-p_1 = seq(0.5, 1.0, by = 0.01)
+p_1 = seq(0.5, 1.0, by = 0.05)
 q_1 = 1.35
-p_2 = c(0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95)
+p_2 = seq(0.5, 1.0, by = 0.05)
 q_2 = seq(1.0, 1.5, by = 0.07)
 sigma_1 = 0.1
 sigma_2 = 1.3
