@@ -14,8 +14,7 @@ The main two scripts that perform the work for the results in our paper are `Pap
 
 Once these files are obtained, you can proceed onto `Paper_Code_Figure.R`, which we now describe. 
 
-The code in `Paper_Code_Figure.R` takes all the data from `Paper_Code_Data.R` and makes the figures given in the below. The following lines produce the corresponding figures:
-- _Figure 1_: Lines
+The code in `Paper_Code_Figure.R` takes all the data from `Paper_Code_Data.R` and makes the figures given in the paper.
 
 # Contents
 
