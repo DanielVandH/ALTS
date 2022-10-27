@@ -10,7 +10,7 @@ enough clean data to use in the regression. In this paper we investigate robust 
 better detect outliers and provide improved forecasts. In general, data-driven approaches perform much
 better than their fixed tuning parameter counterparts. Recommendations for future work are provided.
 
-The main contribution of this code is the extension of Bacher's ALTS [Bacher et al. (2016)](10.1109/ICASSP.2016.7472513) for performing least trimmed square regression with a data-driven tuning parameter. We apply this to the problem of forecasting electricity demand under cyberattacks. We also discuss other data-driven tuning parameters and compare them to fixed tuning parameter methods, and argue that data-driven methods outperform their fixed tuning parameter counterparts. 
+The main contribution of this code is the extension of Bacher's ALTS ([Bacher et al. (2016)](10.1109/ICASSP.2016.7472513)) for performing least trimmed square regression with a data-driven tuning parameter. We apply this to the problem of forecasting electricity demand under cyberattacks. We also discuss other data-driven tuning parameters and compare them to fixed tuning parameter methods, and argue that data-driven methods outperform their fixed tuning parameter counterparts. 
 
 The steps to reproduce the results in the paper are given below, and all the contents of this repository are described following this description. 
 
