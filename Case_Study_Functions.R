@@ -31,6 +31,9 @@
 ##
 ##  10. ramp_attack_all_simulations_grid_vals_2(num_sims, load_dat_training, load_dat_test, gamma, L, p, q, model_formula)
 ##          Ramp attacks the data and then fits many models, repeated `num_sims` times, for a grid of values, based on the gamma formulation.
+##
+##  11. widen_results(data)
+##          Widens the results from an experiment in our case study so that we can obtain the LaTeX code for the corresponding table
 library(MASS)
 library(rlmDataDriven)
 library(ggplot2)
@@ -686,4 +689,26 @@ ramp_attack_all_simulations_grid_vals_2 = function(num_sims, load_dat_training, 
     results[[i]] = ramp_attack_all_simulations(num_sims, load_dat_training, load_dat_test, 2*(grid_vals$gamma[i] - 1)/grid_vals$L[i], grid_vals$L[i], grid_vals$p[i], grid_vals$q[i], model_formula) 
   }
   return(list(results = results, grid_vals = grid_vals))
+}
+
+################################################################################
+##  widen_results_and_latexify(data)
+##    Widens the results from an experiment.
+##
+##  Arguments:
+##    data: The data frame of results to widen.
+##
+##  Outputs:
+##    The output is the widened `data`.
+################################################################################
+widen_results_and_latexify = function(data) {
+  data %>%
+    mutate(mape = 100*mape) %>%
+    ungroup() %>% # Needed for selecting q 
+    select(-phat, -q, -sigmahat) %>%
+    pivot_wider(names_from = "Method", values_from = "mape") %>%
+    .[, c(3, 1, 2, 5, 4, 7, 11, 6, 10, 9, 8)] %>% 
+    mutate(p = 1 - p) %>% 
+    mutate(across(Jiao:LS, function(x) sprintf("%.2f", round(x, digits = 2)))) %>% 
+    kable(booktabs = TRUE)
 }
