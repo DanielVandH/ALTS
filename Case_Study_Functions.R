@@ -31,6 +31,9 @@
 ##
 ##  10. ramp_attack_all_simulations_grid_vals_2(num_sims, load_dat_training, load_dat_test, gamma, L, p, q, model_formula)
 ##          Ramp attacks the data and then fits many models, repeated `num_sims` times, for a grid of values, based on the gamma formulation.
+##
+##  11. widen_results(data)
+##          Widens the results from an experiment in our case study so that we can obtain the LaTeX code for the corresponding table
 library(MASS)
 library(rlmDataDriven)
 library(ggplot2)
@@ -689,7 +692,7 @@ ramp_attack_all_simulations_grid_vals_2 = function(num_sims, load_dat_training, 
 }
 
 ################################################################################
-##  widen_results(data)
+##  widen_results_and_latexify(data)
 ##    Widens the results from an experiment.
 ##
 ##  Arguments:
