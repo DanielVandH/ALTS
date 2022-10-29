@@ -14,10 +14,7 @@
 ##  4. ALTS(model_formula, data, q = 1.0, maxIters = 20, tol = 1e-4, sigma_p = 0.25, residual_initial = rq(model_formula, data = data, method = "conquer")$residuals)
 ##          Fit model using ALTS.
 ##
-##  5. ALTS_CV(model_formula, data, maxIters = 20, tol = 1e-4, sigma_p = 0.25, num_folds = 5, num_q = 30)
-##          Fit model using ALTS, with q chosen using cross-validation.
-##
-##  6. ALTS_Bacher(model_formula, data, maxIters = 20, tol = 1e-4, residual_initial = rq(model_formula, data = data, method = "conquer")$residuals)
+##  5. ALTS_Bacher(model_formula, data, maxIters = 20, tol = 1e-4, residual_initial = rq(model_formula, data = data, method = "conquer")$residuals)
 ##          Fit model using Bacher's ALTS.
 library(EnvStats)
 library(L1pack)
