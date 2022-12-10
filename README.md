@@ -1,6 +1,6 @@
 # ALTS
 
-This repository contains the R code required to reproduce the results in our paper <...>, which has abstract:
+This repository contains the R code required to reproduce the results in our paper https://doi.org/10.1016/j.ijforecast.2022.10.004, which has abstract:
 
 > Standard methods for forecasting electricity loads are not robust to cyberattacks on electricity demand
 data, potentially leading to severe consequences such as major economic loss or a system blackout.
