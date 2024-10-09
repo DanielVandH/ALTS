@@ -22,6 +22,25 @@ library(quantreg)
 library(MASS)
 library(viridis)
 library(rlmDataDriven)
+library(conquer)
+
+patch_rq_fit_conquer <- function (x, y, tau = 0.5, kernel = c("Gaussian", "uniform", 
+                                                              "parabolic", "triangular"), h = 0, tol = 1e-04, iteMax = 5000, 
+                                  ci = FALSE, alpha = 0.05, B = 200) 
+{
+  if (!requireNamespace("conquer", quietly = TRUE)) 
+    stop("method conquer requires package conquer")
+  fit = conquer::conquer(x[, -1], y, tau = tau, kernel = kernel, 
+                         h = h, tol = tol, iteMax = iteMax, ci = ci, alpha = alpha, 
+                         B = 1000)  # <-- here, passing ci as an argument (original version used ci = FALSE)
+  coefficients = fit$coeff
+  names(coefficients) = dimnames(x)[[2]]
+  residuals = fit$residual
+  list(coefficients = coefficients, tau = tau, residuals = residuals)
+}
+
+# Overriding the function in the package's namespace
+assignInNamespace("rq.fit.conquer", patch_rq_fit_conquer, ns = "quantreg")
 
 ################################################################################
 ## Simulation study

@@ -122,7 +122,7 @@ ramp_attack = function(t, yt, p, lambda, L) {
 random_attack_ALTS = function(load_dat_training, load_dat_test, mu, sigma, p, q, model_formula) {
   new_data = load_dat_training %>% mutate(Load = random_attack(mu, sigma, load_dat_training$Load, p))
   # New
-  qr_results = rq(model_formula, data = new_data, method = "conquer")
+  qr_results = rq(model_formula, data = new_data, method = "conquer", kernel = "Gaussian", ci = "none")
   residual_initial = qr_results$residuals
   results = ALTS(model_formula, new_data, q, residual_initial = residual_initial)
   p_hat = results$p[length(results$p)]

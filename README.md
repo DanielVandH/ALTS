@@ -16,6 +16,8 @@ The steps to reproduce the results in the paper are given below, and all the con
 
 # Steps to Reproduce the Paper
 
+Before running any code, ensure the correct versions of the packages are installed by using `renv::restore()` (so you may also need to first do `install.packages("renv")`) in the root of the repository. This will install the necessary package versions to match the environment used in the original analysis.
+
 The main two scripts that perform the work for the results in our paper are `Paper_Code_Data.R` and `Paper_Code_Figure.R`. (If you would only like to reproduce the figures, or just inspect the data sets without rerunning the time consuming algorithms in `Paper_Code_Data.R`, you can skip straight to the description of `Paper_Code_Figure.R` in the next paragraph which reloads the files below.) If you would like to reproduce all the experiments used in the paper, you can run all the code in `Paper_Code_Data.R`. The following files will be saved:
 - `data/Simulation/Fixedq.RData`: In this file, we store the results from our simulation study fixed at $q = 1.35$ and for $p = 0.5, 0.55, \ldots, 1$. The name of the variable stored is `results_fixed_q`.
 - `data/Simulation/Varyingq.RData`: In this file, we store the results from our simulation study for $q = 1, 1.7, \ldots, 1.35, 1.42, 1.49$, and $p = 0.55,0.6,\ldots,0.90, 0.95$. The name of the variable stored is `results_varying_q`.
